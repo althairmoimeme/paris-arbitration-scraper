@@ -1,0 +1,17 @@
+httpx[http2]>=0.27,<0.29
+selectolax>=0.3.21
+sqlalchemy>=2.0,<3
+pydantic>=2.7
+pydantic-settings>=2.4
+rapidfuzz>=3.9
+loguru>=0.7
+openpyxl>=3.1
+python-dotenv>=1.0
+anthropic>=0.40
+tenacity>=9.0
+typer>=0.12
+rich>=13.7
+beautifulsoup4>=4.12
+streamlit>=1.55,<2
+pandas>=2.2,<3
+altair>=5.4

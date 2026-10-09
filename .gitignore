@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Data cache — raw scraped HTML / downloaded files (regenerable)
+data/raw/
+data/eurosatory_deploy.db*
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Local backups + regenerable exports
+data/backups/
+data/exports/
+
+# Scratch pads
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
