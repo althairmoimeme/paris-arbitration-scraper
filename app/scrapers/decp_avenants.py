@@ -32,7 +32,10 @@ _EURO_DECP_DIR = Path("/Users/bertantoine/eurosatory-scraper/data/raw/decp")
 _LOCAL_DECP_DIR = Path(__file__).resolve().parent.parent.parent / "data" / "raw" / "decp"
 
 MIN_DELTA_PCT = 10          # Minimum % change to emit a signal
-MIN_INITIAL_AMOUNT = 1_000_000   # Marché initial amount floor (M€)
+MIN_INITIAL_AMOUNT = 10_000_000   # Marché initial amount floor : ≥10 M€
+# Below this threshold the ticket is too small for H-J's 20-200 M€
+# litigation sweet spot — a +300 % avenant on a 1 M€ marché ends up at
+# 4 M€, below the sweet spot.
 
 
 def _files() -> list[Path]:
@@ -123,11 +126,21 @@ def run() -> dict:
                     heat = _heat_from_delta(abs(delta_pct))
                     original_objet = (m.get("objet") or "")[:120]
                     buyer_id = (m.get("acheteur") or {}).get("id") or ""
+                    def _fmt_m(x: float) -> str:
+                        """Format in M€ with 1 decimal, dropping the decimal
+                        if the value is already round."""
+                        v = x / 1_000_000
+                        if v >= 100:
+                            return f"{v:.0f} M€"
+                        if v == int(v):
+                            return f"{int(v)} M€"
+                        return f"{v:.1f} M€".replace(".", ",")
+
                     for siren in hits:
                         cid = siren_to_company[siren]
                         title = (
                             f"Avenant {direction}{delta_pct:.0f}% · "
-                            f"{int(initial / 1_000_000)} M€ → {int(new_amount / 1_000_000)} M€"
+                            f"{_fmt_m(initial)} → {_fmt_m(new_amount)}"
                         )
                         detail = f"{buyer_id} · marché initial : {original_objet} · motif : {objet_mod}"
                         existing = session.scalar(

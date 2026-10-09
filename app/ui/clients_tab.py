@@ -703,8 +703,9 @@ def render() -> None:
                 1 pt par M€ de surcoût. <i>Ticket pile 20-200 M€ pour H-J.</i></li>
               <li><b>Récence</b> (25 pts max) — avenant &lt; 6 mois = 25 pts,
                 &lt; 12 mois = 12 pts. <i>Un avenant frais déclenche encore un contentieux.</i></li>
-              <li><b>Répétition</b> (20 pts max) — 5 pts par avenant ≥30%,
-                plafonné à 4 avenants. <i>Serial avenant = projet qui dérive.</i></li>
+              <li><b>Répétition</b> (20 pts max) — 5 pts par avenant ≥30%
+                sur un marché initial ≥ <b>10 M€</b>, plafonné à 4 avenants.
+                <i>Serial avenant sur gros projet = terrain à litige.</i></li>
               <li><b>Marché récent XXL</b> (15 pts max) — 50 M€ = 7 pts, 100 M€ = 10 pts,
                 200 M€ = 15 pts. <i>Taille absolue du terrain contentieux.</i></li>
             </ul>
